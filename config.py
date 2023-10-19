@@ -21,7 +21,7 @@ UK_INVESTING_DICT = {
 }
 
 # TODO: Change implementation - DO NOT USE
-_TRADING_VIEW_DICT = {
+UNUSED_TRADING_VIEW_DICT = {
     "name": "Trading View",
     "url": "https://www.tradingview.com/symbols/XAUGBP/",
     "element": ["span", {"class": "last-JWoJqCpY js-symbol-last"}]
@@ -29,7 +29,7 @@ _TRADING_VIEW_DICT = {
 
 
 # TODO: Fix the element to retrieve price - DO NOT USE
-_BLOOMBERG_DICT = {
+UNUSED_BLOOMBERG_DICT = {
     "name": "Bloomberg",
     "url": "https://www.bloomberg.com/quote/XAUGBP:CUR",
     "element": ["div", {'data-component': 'sized-price', 'class': 'sized-price SizedPrice_extraLarge-05pKbJRbUH8-'}]
