@@ -24,7 +24,7 @@ async def root(source: str):
 
         log.info(f"Retrieved gold price: {gold_price}")
 
-        gold = Gold(gold_price, request_time, source_name)
+        gold = Gold(source_name, gold_price, request_time)
         return gold
     else:
         log.warning(f"No dictionary found with the name: {source}")

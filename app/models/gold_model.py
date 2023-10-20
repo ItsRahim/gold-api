@@ -8,13 +8,13 @@ log = configure_logging()
 
 @dataclass
 class Gold:
+    source: str
     price: float
     date: datetime
-    source: str
 
     def __post_init__(self):
-        self.format_datetime()
         self.format_price()
+        self.format_datetime()
 
     def format_datetime(self):
         try:
