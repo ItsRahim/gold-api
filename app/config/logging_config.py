@@ -23,4 +23,6 @@ def configure_logging():
 
     return logger
 
+
+logger = configure_logging()
 # TODO: Enable SSL

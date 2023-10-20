@@ -1,6 +1,4 @@
-from app.config.logging_config import configure_logging
-
-log = configure_logging()
+from app.config.logging_config import logger as log
 
 """
 This is a Python file used to store website information.

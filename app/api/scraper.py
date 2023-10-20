@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import logging
+from app.config.logging_config import logger as log
 from fake_useragent import UserAgent
 
 ua = UserAgent().random
@@ -12,7 +12,7 @@ def get_gold_price(source):
     try:
         result = requests.get(source["url"], headers=user_agent)
         result.raise_for_status()
-        logging.info(f'Successfully fetched data from {source["url"]}')
+        log.info(f'Successfully fetched data from {source["url"]}')
 
         gold_info = BeautifulSoup(result.text, "html.parser")
 
@@ -23,11 +23,11 @@ def get_gold_price(source):
                      .replace(',', ''))
             return round(float(price), 2)
         else:
-            logging.error(f'Price element not found on the page - {gold_info}')
+            log.error(f'Price element not found on the page - {gold_info}')
             return None
     except requests.exceptions.RequestException as e:
-        logging.error(f"Failed to fetch data from {source['name']}: {str(e)}")
+        log.error(f"Failed to fetch data from {source['name']}: {str(e)}")
         return None
     except Exception as e:
-        logging.error(f"An error occurred: {str(e)}")
+        log.error(f"An error occurred: {str(e)}")
         return None
