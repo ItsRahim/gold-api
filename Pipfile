@@ -9,6 +9,7 @@ uvicorn = {extras = ["standard"], version = "*"}
 requests = "*"
 beautifulsoup4 = "*"
 fake-useragent = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
