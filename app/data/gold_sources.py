@@ -1,5 +1,5 @@
 """
-This is a Python file used to store information websites.
+This is a Python file used to store website information.
 
 It provides a centralised location for all sources this api will use to gather information about gold prices.
 Information includes website name, url and html elements to scrape
