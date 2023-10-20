@@ -262,3 +262,7 @@ poetry.toml
 pyrightconfig.json
 
 .env
+.pem
+.key
+.cert
+.crt
