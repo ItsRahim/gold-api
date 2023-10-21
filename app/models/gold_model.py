@@ -27,3 +27,10 @@ class Gold:
         except ValueError:
             self.price = None
             log.error(f"Error formatting price for Gold object: {self}")
+
+    def to_dict(self):
+        return {
+            'source': self.source,
+            'price': self.price,
+            'date': self.date
+        }
