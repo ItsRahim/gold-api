@@ -100,13 +100,9 @@ For any issues, please create an issue in the repository
 
 ## FAQ
 
-#### How do I solve ```ImportError: No module named six ```
+#### 1) How do I solve ```ImportError: No module named six ```
 
 Go into python-kafka's codec.py file and comment ```from kafka.vendor.six.moves import range ```
-
-#### Question 2
-
-Answer 2
 
 
 ## License
