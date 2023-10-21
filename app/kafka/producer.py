@@ -2,7 +2,7 @@ from kafka import KafkaProducer
 from app.config.logging import log
 import json
 
-from app.models import gold as gold_model
+from app.models import gold
 from app.config.load_config import load_config
 
 config = load_config('kafka')
@@ -19,9 +19,9 @@ def get_kafka_producer():
     return kafka_producer
 
 
-def send_price_kafka(gold: gold_model):
+def send_price_kafka(data: gold):
     PRODUCER_TOPIC = config['topic']
-    message = json.dumps(gold.to_dict())
+    message = json.dumps(data.to_dict())
 
     kafka_producer = get_kafka_producer()
     try:
