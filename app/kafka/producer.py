@@ -2,7 +2,7 @@ from kafka import KafkaProducer
 from app.config.logging import log
 import json
 
-from models import gold
+from app.models import gold as gold_model
 from app.config.load_config import load_config
 
 config = load_config('kafka')
