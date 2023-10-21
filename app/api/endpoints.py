@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.config.logging_config import logger as log
+from app.config.logging_config import log
 from app.api.scraper import get_gold_price
 from app.data.gold_sources import get_source
 from datetime import datetime
