@@ -78,7 +78,7 @@ app:
 #### Changing Topic Name (Optional)
 Topic name by default is ```gold-price-stream```
 
-If you wish to change this alter the Kafka commands above ```--topic your_topic_name```  edit the ```app_config.yaml```
+If you wish to change this, you'll need to alter the Kafka commands above ```--topic your_topic_name```  edit the ```app_config.yaml```
 ```yaml
 kafka:
   topic: your_topic_name
