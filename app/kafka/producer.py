@@ -1,16 +1,15 @@
 from kafka import KafkaProducer
 from app.config.logging_config import log
 import json
-import yaml
 
 from models import gold_model
+from app.config.load_config import load_config
 
-with open('app/config/kafka_config.yaml', 'r') as kafka_config_file:
-    kafka_config = yaml.safe_load(kafka_config_file)['kafka']
+config = load_config('kafka')
 
 
 def get_kafka_producer():
-    KAFKA_SERVER = kafka_config['bootstrap_servers']
+    KAFKA_SERVER = config['bootstrap_servers']
 
     kafka_producer = KafkaProducer(
         bootstrap_servers=[KAFKA_SERVER],
@@ -21,7 +20,7 @@ def get_kafka_producer():
 
 
 def send_price_kafka(gold: gold_model):
-    PRODUCER_TOPIC = kafka_config['topic']
+    PRODUCER_TOPIC = config['topic']
     message = json.dumps(gold.to_dict())
 
     kafka_producer = get_kafka_producer()

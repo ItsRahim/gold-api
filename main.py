@@ -1,15 +1,14 @@
-import os
-
 import uvicorn
+
 from fastapi import FastAPI, HTTPException
 from starlette.routing import Route
 from starlette.requests import Request
 from app.api.endpoints import price_router
-from dotenv import load_dotenv
+from app.config.load_config import load_config
 
 app = FastAPI()
 app.include_router(price_router, prefix="/api/v1/gold")
-load_dotenv()
+config = load_config('app')
 
 
 async def catch_all(request: Request):
@@ -20,7 +19,7 @@ app.router.routes.append(catch_all_route)
 
 
 if __name__ == "__main__":
-    host = os.environ.get("FAST_API_HOST")
-    port = int(os.environ.get("FAST_API_PORT"))
+    host = config['host']
+    port = config['port']
 
     uvicorn.run(app, host=host, port=port)
