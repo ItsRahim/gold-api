@@ -3,7 +3,7 @@ from app.config.logging import log
 from app.api.scraper import get_gold_price
 from app.data.gold_sources import get_source
 from datetime import datetime
-from app.models.gold_model import Gold
+from app.models.gold import Gold
 from app.kafka.producer import send_price_kafka
 
 
