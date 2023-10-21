@@ -1,4 +1,5 @@
 from kafka import KafkaProducer
+from app.config.logging_config import log
 import json
 import yaml
 
@@ -24,4 +25,8 @@ def send_price_kafka(gold: gold_model):
     message = json.dumps(gold.to_dict())
 
     kafka_producer = get_kafka_producer()
-    kafka_producer.send(PRODUCER_TOPIC, message)
+    try:
+        kafka_producer.send(PRODUCER_TOPIC, message)
+        log.info(f"Sent message to Kafka topic: {PRODUCER_TOPIC}")
+    except Exception as e:
+        log.error(f"Failed to send message to Kafka: {e}")
