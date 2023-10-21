@@ -34,15 +34,6 @@ Install dependencies
   pipenv install
 ```
 
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`FAST_API_HOST`
-
-`FAST_API_PORT`
-
-
 ## Feedback, Features & Support
 
 If you have any feedback or feature requests, email me at rahim1605@gmail.com
@@ -52,9 +43,9 @@ For any issues, please create an issue in the repository
 
 ## FAQ
 
-#### Question 1
+#### How do I solve ```ImportError: No module named six ```
 
-Answer 1
+Go into python-kafka's codec.py file and comment ```from kafka.vendor.six.moves import range ```
 
 #### Question 2
 
