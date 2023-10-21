@@ -32,5 +32,5 @@ class Gold:
         return {
             'source': self.source,
             'price': self.price,
-            'date': self.date
+            'request_date': self.date
         }
