@@ -63,7 +63,7 @@ Install dependencies
 ```
 <br>
 
-#### Changing Host and Port
+#### Changing Host and Port (Optional)
 By default, the API starts on ```localhost:8000```
 
 This can be changed by altering ```app_config.yaml``` found in ```gold-project-api/app/resource/app_config.yaml```
@@ -75,7 +75,7 @@ app:
 ```
 <br>
 
-#### Changing Topic Name
+#### Changing Topic Name (Optional)
 Topic name by default is ```gold-price-stream```
 
 If you wish to change this alter the Kafka commands above ```--topic your_topic_name```  edit the ```app_config.yaml```
@@ -83,6 +83,14 @@ If you wish to change this alter the Kafka commands above ```--topic your_topic_
 kafka:
   topic: your_topic_name
 ```
+<br>
+
+### Run Program
+Whilst in the project directory
+```commandline
+pipenv run main.py
+```
+
 ## Feedback, Features & Support
 
 If you have any feedback or feature requests, email me at rahim1605@gmail.com
