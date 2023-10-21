@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from app.config.logging_config import logger as log
+from app.config.logging_config import log
 
 
 @dataclass
