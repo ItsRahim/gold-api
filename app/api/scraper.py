@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from app.config.logging_config import log
+from app.config.logging import log
 from fake_useragent import UserAgent
 
 ua = UserAgent().random

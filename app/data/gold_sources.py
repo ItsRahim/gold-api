@@ -1,4 +1,4 @@
-from app.config.logging_config import log
+from app.config.logging import log
 
 """
 This is a Python file used to store website information.

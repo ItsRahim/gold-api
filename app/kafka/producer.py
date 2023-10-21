@@ -1,5 +1,5 @@
 from kafka import KafkaProducer
-from app.config.logging_config import log
+from app.config.logging import log
 import json
 
 from models import gold_model
