@@ -31,8 +31,10 @@ class KafkaHandler:
         admin_client = KafkaAdminClient(bootstrap_servers=self.KAFKA_SERVER)
         if self.TOPIC_NAME not in admin_client.list_topics():
             log.info(f"Kafka Topic {self.TOPIC_NAME} does not exist. Creating...")
+
             new_topic = NewTopic(self.TOPIC_NAME, num_partitions=NUM_PARTITIONS, replication_factor=REPLICATION_FACTOR)
             admin_client.create_topics([new_topic])
+            
             log.info(f"Kafka topic '{self.TOPIC_NAME}' created successfully")
 
     def send_price(self, data):

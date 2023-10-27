@@ -13,7 +13,7 @@ kafka_handler = KafkaHandler()
 
 
 @price_router.get("/{requested_source}")
-async def root(requested_source: str):
+async def root(requested_source: str) -> None:
     log.info(f"Received request for gold price from source: {requested_source}")
     source = get_source(requested_source)
 

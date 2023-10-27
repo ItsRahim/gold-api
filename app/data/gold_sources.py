@@ -70,7 +70,7 @@ BULLION_BY_POST_DICT = {
 }
 
 
-def get_source(requested_source: str):
+def get_source(requested_source: str) -> dict or None:
     sources = [UK_INVESTING_DICT, UNUSED_TRADING_VIEW_DICT, UNUSED_BLOOMBERG_DICT, CNBC_DICT, FORBES_DICT,
                GOLD_UK_DICT, BULLION_BY_POST_DICT]
     try:

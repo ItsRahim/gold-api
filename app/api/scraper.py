@@ -8,7 +8,7 @@ ua = UserAgent().random
 user_agent = {'User-Agent': ua}
 
 
-def get_gold_price(source):
+def get_gold_price(source: dict) -> float or None:
     try:
         result = requests.get(source["url"], headers=user_agent)
         result.raise_for_status()

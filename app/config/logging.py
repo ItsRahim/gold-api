@@ -25,4 +25,3 @@ def configure_logging():
 
 
 log = configure_logging()
-# TODO: Enable SSL
