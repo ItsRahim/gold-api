@@ -1,4 +1,5 @@
-from kafka import KafkaProducer
+from kafka import KafkaProducer, KafkaAdminClient
+from kafka.admin import NewTopic
 from app.config.logging import log
 import json
 
@@ -29,3 +30,16 @@ def send_price_kafka(data: gold):
         log.info(f"Sent message to Kafka topic: {PRODUCER_TOPIC}")
     except Exception as e:
         log.error(f"Failed to send message to Kafka: {e}")
+
+
+def initialise():
+    KAFKA_SERVER = config['bootstrap_servers']
+    TOPIC_NAME = config['topic']
+    NUM_PARTITIONS = 3
+    REPLICATION_FACTOR = 1
+
+    admin_client = KafkaAdminClient(bootstrap_servers=KAFKA_SERVER)
+    new_topic = NewTopic(TOPIC_NAME, num_partitions=NUM_PARTITIONS, replication_factor=REPLICATION_FACTOR)
+
+    admin_client.create_topics([new_topic])
+    log.info(f"Kafka topic '{TOPIC_NAME}' created successfully.")

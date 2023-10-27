@@ -18,7 +18,7 @@ current XAU/GBP price information.
 """
 UK_INVESTING_DICT = {
     "name": "UK Investing",
-    "request_name": "uk_investing",
+    "request_name": "uk-investing",
     "url": "https://uk.investing.com/currencies/xau-gbp",
     "element": ["span", {"class": "text-2xl", "data-test": "instrument-price-last"}]
 }
