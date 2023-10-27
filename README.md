@@ -47,6 +47,7 @@ Install dependencies
 
 ## Setup
 #### Kafka and Zookeeper
+Kafka topics are created automatically upon an endpoint being called. See below if you wish to change topic name
 
 ```commandline
 # Start Zookeeper
@@ -55,10 +56,7 @@ Install dependencies
 # Start Kafka
 .\bin\windows\kafka-server-start.bat .\config\server.properties
 
-# Create Kafka Topic
-.\bin\windows\kafka-topics.bat --create --topic gold-price-stream --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
-
-# Start Consumer
+# Start Consumer (Optional)
 .\bin\windows\kafka-console-consumer.bat --topic gold-price-stream --bootstrap-server localhost:9092 --from-beginning
 ```
 <br>
