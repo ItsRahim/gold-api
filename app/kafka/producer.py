@@ -3,7 +3,6 @@ from kafka.admin import NewTopic
 from app.config.logging import log
 import json
 
-from app.models import gold
 from app.config.load_config import load_config
 
 
