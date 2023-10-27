@@ -36,7 +36,7 @@ class KafkaHandler:
             admin_client.create_topics([new_topic])
             log.info(f"Kafka topic '{self.TOPIC_NAME}' created successfully")
 
-    def send_price_kafka(self, data):
+    def send_price(self, data):
         message = json.dumps(data.to_dict())
         try:
             self.kafka_producer.send(self.TOPIC_NAME, message)

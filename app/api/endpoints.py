@@ -28,7 +28,7 @@ async def root(requested_source: str):
         log.info(f"Retrieved gold price from {source_name}")
 
         gold = Gold(source_name, gold_price, request_time)
-        kafka_handler.send_price_kafka(gold)
+        kafka_handler.send_price(gold)
         log.info(f"Gold object data - {gold} sent to Kafka producer")
     else:
         log.warning(f"No dictionary found with the name: {requested_source}")
