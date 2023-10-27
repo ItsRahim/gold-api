@@ -78,7 +78,7 @@ app:
 #### Changing Topic Name (Optional)
 Topic name by default is ```gold-price-stream```
 
-If you wish to change this alter the Kafka commands above ```--topic your_topic_name```  edit the ```app_config.yaml```
+If you wish to change this, you'll need to alter the Kafka commands above ```--topic your_topic_name```  edit the ```app_config.yaml```
 ```yaml
 kafka:
   topic: your_topic_name
@@ -100,13 +100,9 @@ For any issues, please create an issue in the repository
 
 ## FAQ
 
-#### How do I solve ```ImportError: No module named six ```
+#### 1) How do I solve ```ImportError: No module named six ```
 
 Go into python-kafka's codec.py file and comment ```from kafka.vendor.six.moves import range ```
-
-#### Question 2
-
-Answer 2
 
 
 ## License
