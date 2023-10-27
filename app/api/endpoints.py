@@ -3,11 +3,13 @@ from app.config.logging import log
 from app.api.scraper import get_gold_price
 from app.data.gold_sources import get_source
 from datetime import datetime
+
+from app.kafka.producer import KafkaHandler
 from app.models.gold import Gold
-from app.kafka.producer import send_price_kafka
 
 
 price_router = APIRouter()
+kafka_handler = KafkaHandler()
 
 
 @price_router.get("/{requested_source}")
@@ -26,7 +28,7 @@ async def root(requested_source: str):
         log.info(f"Retrieved gold price from {source_name}")
 
         gold = Gold(source_name, gold_price, request_time)
-        send_price_kafka(gold)
+        kafka_handler.send_price_kafka(gold)
         log.info(f"Gold object data - {gold} sent to Kafka producer")
     else:
         log.warning(f"No dictionary found with the name: {requested_source}")

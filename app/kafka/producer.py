@@ -6,40 +6,40 @@ import json
 from app.models import gold
 from app.config.load_config import load_config
 
-config = load_config('kafka')
 
+class KafkaHandler:
+    _init_has_run = False
 
-def get_kafka_producer():
-    KAFKA_SERVER = config['bootstrap_servers']
+    def __init__(self):
+        if not KafkaHandler._init_has_run:
+            self.config = load_config('kafka')
+            self.KAFKA_SERVER = self.config['bootstrap_servers']
+            self.TOPIC_NAME = self.config['topic']
 
-    kafka_producer = KafkaProducer(
-        bootstrap_servers=[KAFKA_SERVER],
-        value_serializer=lambda v: json.dumps(v).encode('utf-8')
-    )
+            self.kafka_producer = KafkaProducer(
+                bootstrap_servers=[self.KAFKA_SERVER],
+                value_serializer=lambda v: json.dumps(v).encode('utf-8')
+            )
 
-    return kafka_producer
+            self.create_kafka_topic()
 
+            KafkaHandler._init_has_run = True
 
-def send_price_kafka(data: gold):
-    PRODUCER_TOPIC = config['topic']
-    message = json.dumps(data.to_dict())
+    def create_kafka_topic(self):
+        NUM_PARTITIONS = 3
+        REPLICATION_FACTOR = 1
 
-    kafka_producer = get_kafka_producer()
-    try:
-        kafka_producer.send(PRODUCER_TOPIC, message)
-        log.info(f"Sent message to Kafka topic: {PRODUCER_TOPIC}")
-    except Exception as e:
-        log.error(f"Failed to send message to Kafka: {e}")
+        admin_client = KafkaAdminClient(bootstrap_servers=self.KAFKA_SERVER)
+        if self.TOPIC_NAME not in admin_client.list_topics():
+            log.info(f"Kafka Topic {self.TOPIC_NAME} does not exist. Creating...")
+            new_topic = NewTopic(self.TOPIC_NAME, num_partitions=NUM_PARTITIONS, replication_factor=REPLICATION_FACTOR)
+            admin_client.create_topics([new_topic])
+            log.info(f"Kafka topic '{self.TOPIC_NAME}' created successfully")
 
-
-def initialise():
-    KAFKA_SERVER = config['bootstrap_servers']
-    TOPIC_NAME = config['topic']
-    NUM_PARTITIONS = 3
-    REPLICATION_FACTOR = 1
-
-    admin_client = KafkaAdminClient(bootstrap_servers=KAFKA_SERVER)
-    new_topic = NewTopic(TOPIC_NAME, num_partitions=NUM_PARTITIONS, replication_factor=REPLICATION_FACTOR)
-
-    admin_client.create_topics([new_topic])
-    log.info(f"Kafka topic '{TOPIC_NAME}' created successfully.")
+    def send_price_kafka(self, data):
+        message = json.dumps(data.to_dict())
+        try:
+            self.kafka_producer.send(self.TOPIC_NAME, message)
+            log.info(f"Sent message to Kafka topic: {self.TOPIC_NAME}")
+        except Exception as e:
+            log.error(f"Failed to send message to Kafka: {e}")
