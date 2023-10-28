@@ -1,7 +1,7 @@
 import os
 import logging
 
-LOG_DIR = os.path.join(os.getcwd(), 'logs')
+LOG_DIR = os.path.join(os.getcwd(), '/app/logs')
 LOG_FILE = os.path.join(LOG_DIR, 'gold-scraping-api.log')
 
 
