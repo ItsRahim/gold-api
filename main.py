@@ -3,8 +3,8 @@ import uvicorn
 from fastapi import FastAPI, HTTPException
 from starlette.routing import Route
 from starlette.requests import Request
-from api.endpoints import price_router
-from config.load_config import load_config
+from app.api.endpoints import price_router
+from app.config.load_config import load_config
 
 app = FastAPI()
 app.include_router(price_router, prefix="/api/v1/gold")
