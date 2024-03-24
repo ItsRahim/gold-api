@@ -47,18 +47,7 @@ Install dependencies
 
 ## Setup
 #### Kafka and Zookeeper
-Kafka topics are created automatically upon an endpoint being called. See below if you wish to change topic name
-
-```commandline
-# Start Zookeeper
-.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
-
-# Start Kafka
-.\bin\windows\kafka-server-start.bat .\config\server.properties
-
-# Start Consumer (Optional)
-.\bin\windows\kafka-console-consumer.bat --topic gold-price-stream --bootstrap-server localhost:9092 --from-beginning
-```
+Start Kafka, API published to port 9092 by default. See below to configure bootstrap server
 <br>
 
 #### Changing Host and Port (Optional)
@@ -97,11 +86,6 @@ For any issues, please create an issue in the repository
 
 
 ## FAQ
-
-#### 1) How do I solve ```ImportError: No module named six ```
-
-Go into python-kafka's codec.py file and comment ```from kafka.vendor.six.moves import range ```
-
 
 ## License
 
