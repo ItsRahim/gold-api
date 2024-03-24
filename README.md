@@ -36,7 +36,7 @@ pip install pipenv
 Go to the project directory and install depedencies
 
 ```bash
-    pipenv install
+pipenv install
 ```
 
 ## Setup
