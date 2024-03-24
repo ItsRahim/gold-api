@@ -33,22 +33,22 @@ Install pipenv
 pip install pipenv
 ```
 
-Go to the project directory
+Go to the project directory and install depedencies
 
 ```bash
-  cd C:/.../gold-price-api
-```
-
-Install dependencies
-
-```bash
-  pipenv install
+    pipenv install
 ```
 
 ## Setup
 #### Kafka and Zookeeper
 Start Kafka, API published to port 9092 by default. See below to configure bootstrap server
 <br>
+
+### Run Program
+Whilst in the project directory
+```commandline
+pipenv run main.py
+```
 
 #### Changing Host and Port (Optional)
 By default, the API starts on ```localhost:8000```
@@ -71,12 +71,6 @@ kafka:
   topic: your_topic_name
 ```
 <br>
-
-### Run Program
-Whilst in the project directory
-```commandline
-pipenv run main.py
-```
 
 ## Feedback, Features & Support
 
