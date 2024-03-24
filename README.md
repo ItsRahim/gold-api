@@ -41,7 +41,7 @@ Go to the project directory and install depedencies
 
 ## Setup
 #### Kafka and Zookeeper
-Start Kafka, API published to port 9092 by default. See below to configure bootstrap server
+Start Kafka, API data is published to ```localhost:9092``` by default. See below to configure bootstrap server
 <br>
 
 ### Run Program
