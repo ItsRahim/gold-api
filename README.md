@@ -50,7 +50,7 @@ Whilst in the project directory
 pipenv run main.py
 ```
 
-#### Changing Host and Port (Optional)
+#### Changing Host and Port of API Endpoint (Optional)
 By default, the API starts on ```localhost:8000```
 
 This can be changed by altering ```app_config.yaml``` found in ```gold-project-api/app/resource/app_config.yaml```
@@ -62,12 +62,13 @@ app:
 ```
 <br>
 
-#### Changing Topic Name (Optional)
+#### Changing Topic Name/Bootstrap Server (Optional)
 Topic name by default is ```gold-price-stream```
 
 If you wish to change this, edit the ```app_config.yaml```
 ```yaml
 kafka:
+  bootstrap_servers: your_bootstrap_server
   topic: your_topic_name
 ```
 <br>
